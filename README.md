@@ -21,6 +21,7 @@ fmriprep_9p_pos_links_358.csv & fmriprep_9p_pos_nodes_358.csv
 ## Participation coefficient data
 fmriprep_9p_DMN_nodes_PC.csv
 - This csv file contains the participation coefficient values for the DMN nodes to the whole brain
+
 PC_DMN.xlsx
 - This csv file contains the participation coefficient values for the DMN nodes for just within the DMN
 These are plotted and stats are run using PC_figures.ipynb
