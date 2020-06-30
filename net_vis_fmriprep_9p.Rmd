@@ -1,0 +1,57 @@
+---
+title: "network-vis"
+output: html_notebook
+---
+
+# load libraries
+
+```{r}
+suppressMessages(library("igraph"))
+suppressMessages(library("network"))
+library("RColorBrewer")
+library(ggplot2)
+library(scales)
+library("ForceAtlas2")
+```
+
+# load whole brain data and plot with forceatlas2
+```{r,fig.width=10, fig.height=10}
+
+fmriprep_9p_nodes<-read.csv("~/Documents/Community_detection/hippo_nets/fmriprep_9p_pos_nodes_358.csv", header=T, as.is=T)
+fmriprep_9p_links <- read.csv("~/Documents/Community_detection/hippo_nets/fmriprep_9p_pos_links_358.csv", quote="'")
+fmriprep_9p_links[fmriprep_9p_links<(.2142)]=0
+fmriprep_9p_links<-as.matrix(fmriprep_9p_links)
+
+fmriprep_9p_links<-matrix(fmriprep_9p_links,nrow=358,ncol=358)
+fmriprep_9p_net <- graph_from_adjacency_matrix(fmriprep_9p_links,weighted = TRUE)
+fmriprep_9p_net<-simplify(fmriprep_9p_net, remove.multiple = F, remove.loops = T)
+
+wholebrain_colrs <- c("#0000C8", "#00FFFF","#A300A3","#00CE00","#C800C8","#00FF00","#009C9A","#FFFF00","#FF00FF","#FF0000","#34A853")
+V(fmriprep_9p_net)$label[V(fmriprep_9p_net)] <- fmriprep_9p_nodes$community[V(fmriprep_9p_net)] 
+V(fmriprep_9p_net)$color<-wholebrain_colrs[V(fmriprep_9p_net)$label]
+l_whole <- layout.forceatlas2(fmriprep_9p_net, iterations=3000, plotstep=100)
+E(fmriprep_9p_net)$width <- abs(E(fmriprep_9p_net)$weight/5)
+plot(fmriprep_9p_net,vertex.label=NA,arrow.mode=0,edge.arrow.size=0,layout=l_whole, vertex.size = 3)
+```
+# whole brain with DMN SUBNETWORKS
+
+```{r,fig.width=10, fig.height=10}
+
+fmriprep_9p_nodes<-read.csv("~/Documents/Community_detection/github_repo/fmriprep_9p/fmriprep_9p_pos_nodes_358.csv", header=T, as.is=T)
+fmriprep_9p_links <- read.csv("~/Documents/Community_detection/github_repo/fmriprep_9p/fmriprep_9p_pos_links_358.csv", quote="'")
+fmriprep_9p_links[fmriprep_9p_links<(.2142)]=0
+fmriprep_9p_links<-as.matrix(fmriprep_9p_links)
+
+fmriprep_9p_links<-matrix(fmriprep_9p_links,nrow=358,ncol=358)
+fmriprep_9p_net <- graph_from_adjacency_matrix(fmriprep_9p_links,weighted = TRUE)
+fmriprep_9p_net<-simplify(fmriprep_9p_net, remove.multiple = F, remove.loops = T)
+
+#"#EA4335","#4285F4","#FBBC05"
+
+wholebrain_colrs <- c("#0000C8", "#00FFFF","#A300A3","#00CE00","#C800C8","#00FF00","#009C9A","#FFFF00","#FF00FF","#EA4335","#34A853","#4285F4","#FBBC05")
+V(fmriprep_9p_net)$label[V(fmriprep_9p_net)] <- fmriprep_9p_nodes$community_sublabels[V(fmriprep_9p_net)] 
+V(fmriprep_9p_net)$color<-wholebrain_colrs[V(fmriprep_9p_net)$label]
+l_whole <- layout.forceatlas2(fmriprep_9p_net, iterations=3000, plotstep=100)
+E(fmriprep_9p_net)$width <- abs(E(fmriprep_9p_net)$weight/5)
+plot(fmriprep_9p_net,vertex.label=NA,arrow.mode=0,edge.arrow.size=0,layout=l_whole,vertex.size = 3)
+```
