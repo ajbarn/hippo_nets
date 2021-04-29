@@ -62,8 +62,6 @@ Terms are plotted using wordcloud_fig.ipynb
 
 # Figures
 
-## Figure 1
-
 Figure 1B
 Functional connectivity matrix for the array Z_fmriprep_9p_avg_rearr in rearranged_matrices.mat
 This data is from the array Z_fmriprep_9p_avg reorganized according to labels produced from the script louv_comm_det_iteration_fmriprep_9p.m
@@ -125,8 +123,12 @@ t-values for all regions can be found in the arrays WashU_v_UCD_L and WashU_v_UC
 Positive t-values are those in which the UCD dataset has higher tnsr.
 
 Supplemental Figure 4
+This figure shows data that represent the average pathlength (y-axis) between the DMN and every network in the brain (target) after removal of every other network (x-axis)
+data for this figure can be found in supplemental_path_length_data.mat in the array SPL_DMN
 
 Supplemental Figure 5
+This figure shows data that represent the average pathlength (y-axis) between the hippocampus and every network in the brain (target) after removal of every other network (x-axis)
+data for this figure can be found in supplemental_path_length_data.mat in the array SPL_hipp
 
 Supplemental Figure 6
 These data are the average spearman correlations of the representational dissimilarity profiles of pairs of regions in each cortico-hippocampal network, to every other network in the brain. 
