@@ -89,8 +89,12 @@ Figure 4B
 Participation coefficients for the DMN subnetworks for the diversity of connections outside of the DMN and, separately, inside the DMN to other subnetworks
 Data was calculated using participation_coef.m from the brain connectivity toolbox (BCT) along with the network labels attained from Louvain community detection (above) and was plotted using the notebook PC_figures.ipynb
 
-Figure 5
+Figure 5A
 Functional connectivity of the anterior and posterior hippocampus to the DMN subnetworks extracted from each participant using the labaels attained from Louvain community detection (above) and plotted using hippo_nets_conn.ipynb
+
+Figure 5B
+T-values for the difference in anterior and posterior hippocampal connectivity for regions within the cortico-hippocampal networks, projected on the surface of the brain.
+Data can be found in antvpost_Tvalues_conn.xlsx
 
 Figure 6 LEFT
 These data are the average spearman correlations of the representational dissimilarity profiles of of pairs of regions of interest that are in the same cortico-hippocampal network or pairs that are in different cortico-hippocampal networks. 
