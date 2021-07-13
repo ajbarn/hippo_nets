@@ -1,5 +1,6 @@
 # hippo_nets
-A repository for the data and and scripts used in the study: https://www.biorxiv.org/content/10.1101/2020.06.09.142166v1
+A repository for the data and and scripts used in the study:https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3001275
+https://www.biorxiv.org/content/10.1101/2020.06.09.142166v1
 
 # data
 ## matlab workspace
